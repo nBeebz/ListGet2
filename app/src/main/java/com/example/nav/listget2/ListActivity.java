@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -203,13 +204,14 @@ public class ListActivity extends Activity implements ActionBar.TabListener {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            Mongo.getMongo( this ).get( "lists", "contributors", email );
+            Mongo.getMongo( this ).getContributorLists( email );
             inf = inflater;
             return super.onCreateView(inflater, container, savedInstanceState);
         }
 
         @Override
         public void processResult(String result) {
+            Log.d("ProcessResult", result );
             lists = ListObject.getLists( result );
             SharedListAdapter adapter = new SharedListAdapter(
                     inf.getContext(), R.layout.shared_list_line, R.id.sListName,

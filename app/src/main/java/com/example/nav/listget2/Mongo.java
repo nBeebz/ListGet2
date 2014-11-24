@@ -59,6 +59,18 @@ public class Mongo {
         }catch (Exception e){e.printStackTrace();}
     }
 
+    public void getContributorLists( String value )
+    {
+        String query;
+        String url;
+
+        try {
+            query = "{\"contributors\":{\"email\":\"" + value + "\"}}";
+            url = BASE_URL + "lists" + "?q=" + URLEncoder.encode(query, "UTF-8") + "&" + API_KEY;
+            new GetTask(activity).execute(url);
+        }catch (Exception e){e.printStackTrace();}
+    }
+
     public void getByID( String coll, String oid )
     {
         String query = "{\"_id\":{\"$oid\":\"" + oid + "\"}}";
