@@ -8,5 +8,6 @@
     <string name="list_owned">My Lists</string>
     <string name="list_shared">Shared Lists</string>
     <string name="title_activity_item">ItemActivity</string>
+    <string name="title_activity_share">Share</string>
 
 </resources>

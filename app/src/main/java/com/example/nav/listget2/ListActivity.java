@@ -20,7 +20,6 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-
 public class ListActivity extends Activity implements ActionBar.TabListener {
 
     private static String email;
@@ -89,15 +88,21 @@ public class ListActivity extends Activity implements ActionBar.TabListener {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.share:
+                return true;
+
+            case R.id.from_contacts:
+                Intent contact_select = new Intent(getBaseContext(), Share.class);
+                startActivity(contact_select);
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
